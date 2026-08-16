@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "apps.branches",
     "apps.products",
     "apps.orders",
+    "apps.analytics",
 ]
 
 MIDDLEWARE = [
@@ -114,6 +115,8 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
+    # Render Decimal fields as native JSON numbers (e.g. 28420.50), not strings.
+    "COERCE_DECIMAL_TO_STRING": False,
 }
 
 # --- CORS ---
