@@ -33,11 +33,13 @@ export default function Dashboard() {
 
   function handlePresetChange(key) {
     setPreset(key);
-    setRange(getPresetRange(key));
+    if (key !== "custom") {
+      setRange(getPresetRange(key));
+    }
   }
 
   function handleCustomDateChange(start, end) {
-    setPreset(null);
+    setPreset("custom");
     setRange({ start_date: start, end_date: end });
   }
 
@@ -74,8 +76,8 @@ export default function Dashboard() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <TopProducts products={data.top_products} title="Top Selling Items" />
-            <TopProducts products={data.bottom_products} title="Needs Attention" />
+            <TopProducts products={data.top_products} title="Top Selling Items" variant="top" />
+            <TopProducts products={data.bottom_products} title="Needs Attention" variant="bottom" />
           </div>
 
           <BranchPerformance branches={data.branch_performance} />

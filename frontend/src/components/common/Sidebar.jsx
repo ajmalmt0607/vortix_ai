@@ -40,20 +40,30 @@ export default function Sidebar() {
       </aside>
 
       {/* Mobile bottom navigation */}
-      <nav className="fixed inset-x-0 bottom-0 z-30 flex border-t border-slate-200 bg-white lg:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-30 flex h-16 border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden">
         {navItems.map(({ to, label, icon: Icon }) => (
           <NavLink
             key={to}
             to={to}
             end={to === "/"}
             className={({ isActive }) =>
-              `flex flex-1 flex-col items-center gap-1 py-2.5 text-xs font-medium ${
+              `flex flex-1 flex-col items-center justify-center gap-1 text-xs font-medium transition-colors ${
                 isActive ? "text-indigo-600" : "text-slate-500"
               }`
             }
           >
-            <Icon className="h-5 w-5" />
-            {label}
+            {({ isActive }) => (
+              <>
+                <span
+                  className={`flex items-center justify-center rounded-lg px-3.5 py-1 transition-colors ${
+                    isActive ? "bg-indigo-50" : ""
+                  }`}
+                >
+                  <Icon className="h-5 w-5" />
+                </span>
+                {label}
+              </>
+            )}
           </NavLink>
         ))}
       </nav>

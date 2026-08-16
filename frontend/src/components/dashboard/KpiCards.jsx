@@ -11,7 +11,7 @@ function GrowthBadge({ value }) {
         positive ? "text-emerald-600" : "text-rose-600"
       }`}
     >
-      <Icon className="h-3.5 w-3.5" />
+      <Icon className="h-3.5 w-3.5 flex-shrink-0" />
       {formatPercent(value)}
     </span>
   );
@@ -53,20 +53,27 @@ export default function KpiCards({ summary, comparison }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
       {cards.map((card) => (
-        <div key={card.key} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium uppercase tracking-wide text-slate-400">{card.label}</span>
-            <card.icon className="h-4 w-4 text-indigo-500" />
+        <div
+          key={card.key}
+          className="min-w-0 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm sm:p-5"
+        >
+          <div className="flex items-center justify-between gap-2">
+            <span className="truncate text-[10px] font-medium uppercase tracking-wide text-slate-400 sm:text-xs">
+              {card.label}
+            </span>
+            <card.icon className="h-4 w-4 flex-shrink-0 text-indigo-500" />
           </div>
-          <p className="mt-2 text-2xl font-semibold text-slate-900">{card.value}</p>
+          <p className="mt-1.5 truncate text-lg font-semibold text-slate-900 sm:mt-2 sm:text-2xl">
+            {card.value}
+          </p>
           {card.caption ? (
-            <p className="mt-2 text-xs text-slate-400">{card.caption}</p>
+            <p className="mt-1.5 text-[11px] text-slate-400 sm:mt-2 sm:text-xs">{card.caption}</p>
           ) : (
-            <div className="mt-2 flex items-center gap-1.5">
+            <div className="mt-1.5 flex items-center gap-1.5 sm:mt-2">
               <GrowthBadge value={card.growth} />
-              <span className="text-xs text-slate-400">vs previous period</span>
+              <span className="hidden text-xs text-slate-400 xs:inline sm:inline">vs previous</span>
             </div>
           )}
         </div>

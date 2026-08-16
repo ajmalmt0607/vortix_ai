@@ -61,8 +61,8 @@ export default function AICopilotDrawer() {
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-end sm:p-5">
       <div className="absolute inset-0 bg-slate-900/20 sm:hidden" onClick={close} />
-      <div className="relative flex h-full w-full flex-col bg-white shadow-2xl sm:h-[600px] sm:max-h-[85vh] sm:w-[380px] sm:rounded-2xl sm:border sm:border-slate-200">
-        <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3.5">
+      <div className="relative flex h-[100dvh] w-full flex-col bg-white shadow-2xl sm:h-[600px] sm:max-h-[85vh] sm:w-[380px] sm:rounded-2xl sm:border sm:border-slate-200">
+        <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-100 px-4 pb-3.5 pt-[calc(env(safe-area-inset-top)+0.875rem)] sm:pt-3.5">
           <div className="flex items-center gap-2">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-white">
               <Sparkles className="h-3.5 w-3.5" />
@@ -83,9 +83,13 @@ export default function AICopilotDrawer() {
         <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
           {messages.length === 0 ? (
             <>
-              <p className="text-sm text-slate-500">
-                Ask anything about your restaurant's sales, orders, products or branches.
-              </p>
+              <div className="flex flex-col items-center gap-1.5 pb-1 pt-2 text-center">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+                  <Sparkles className="h-5 w-5" />
+                </span>
+                <p className="mt-1.5 text-sm font-semibold text-slate-800">What would you like to know?</p>
+                <p className="text-xs text-slate-400">Ask about sales, products, branches or trends.</p>
+              </div>
               <SuggestedQuestions onSelect={(q) => handleSend(q)} />
             </>
           ) : (
@@ -104,7 +108,7 @@ export default function AICopilotDrawer() {
             e.preventDefault();
             handleSend();
           }}
-          className="flex items-center gap-2 border-t border-slate-100 px-3 py-3"
+          className="flex flex-shrink-0 items-center gap-2 border-t border-slate-100 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3"
         >
           <input
             value={input}

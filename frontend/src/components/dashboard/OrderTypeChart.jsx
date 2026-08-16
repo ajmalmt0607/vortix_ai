@@ -8,7 +8,7 @@ const LABELS = { DINE_IN: "Dine-in", TAKEAWAY: "Takeaway", DELIVERY: "Delivery" 
 export default function OrderTypeChart({ orderTypes }) {
   if (!orderTypes || orderTypes.length === 0) {
     return (
-      <div className="h-full rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="h-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
         <h3 className="mb-4 text-sm font-semibold text-slate-900">Order Types</h3>
         <EmptyState title="No orders" message="No orders found for this period." />
       </div>
@@ -22,9 +22,9 @@ export default function OrderTypeChart({ orderTypes }) {
   }));
 
   return (
-    <div className="h-full rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="h-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
       <h3 className="mb-4 text-sm font-semibold text-slate-900">Order Types</h3>
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height={220}>
         <PieChart>
           <Pie data={data} dataKey="orders" nameKey="label" innerRadius={55} outerRadius={85} paddingAngle={2}>
             {data.map((entry) => (
