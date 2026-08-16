@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "apps.products",
     "apps.orders",
     "apps.analytics",
+    "apps.ai",
 ]
 
 MIDDLEWARE = [
@@ -93,6 +94,10 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# --- AI Copilot (OpenAI) ---
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL") or "gpt-4o-mini"
 
 # --- Redis ---
 REDIS_HOST = os.environ.get("REDIS_HOST", "redis")
