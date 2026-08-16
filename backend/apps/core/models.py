@@ -1,2 +1,16 @@
-# No models yet. Business models (branches, orders, products, etc.) will be
-# added in later phases as dedicated apps.
+import uuid
+
+from django.db import models
+
+
+class BaseModel(models.Model):
+    """Abstract base for all business models: UUID PK + audit timestamps."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        abstract = True
+        ordering = ["-created_at"]

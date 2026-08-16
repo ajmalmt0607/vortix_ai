@@ -23,6 +23,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "apps.core",
+    "apps.branches",
+    "apps.products",
+    "apps.orders",
 ]
 
 MIDDLEWARE = [
