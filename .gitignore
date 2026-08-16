@@ -1,0 +1,22 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+.DS_Store
+
+# Django
+staticfiles/
+media/
+*.log
+db.sqlite3
+
+# Celery
+celerybeat-schedule
