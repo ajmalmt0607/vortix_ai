@@ -41,8 +41,8 @@ export default function OrderDetailDrawer({ orderId, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
       <div className="absolute inset-0 bg-slate-900/30" onClick={onClose} />
-      <div className="relative flex h-full w-full max-w-md flex-col bg-white shadow-2xl">
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+      <div className="relative flex h-[100dvh] w-full max-w-md flex-col bg-white shadow-2xl sm:h-full">
+        <div className="flex flex-shrink-0 items-center justify-between border-b border-slate-100 px-5 pb-4 pt-[calc(env(safe-area-inset-top)+1rem)] sm:pt-4">
           <h2 className="text-sm font-semibold text-slate-900">Order Details</h2>
           <button
             onClick={onClose}
@@ -52,7 +52,7 @@ export default function OrderDetailDrawer({ orderId, onClose }) {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-5 py-5">
+        <div className="flex-1 overflow-y-auto px-5 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] pt-5">
           {loading && <LoadingState message="Loading order..." />}
           {!loading && error && <ErrorState message={error} />}
           {!loading && !error && order && (
