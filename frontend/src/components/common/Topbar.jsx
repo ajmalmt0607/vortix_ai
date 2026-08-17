@@ -11,7 +11,7 @@ export default function Topbar() {
         </div>
       </div>
       <div className="hidden text-sm font-medium text-slate-500 lg:block">AI Restaurant Intelligence</div>
-      <div className="text-xs font-medium text-slate-400 sm:text-sm">UAE Restaurant</div>
+      {/* <div className="text-xs font-medium text-slate-400 sm:text-sm">UAE Restaurant</div> */}
     </header>
   );
 }
